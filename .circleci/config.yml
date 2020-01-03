@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/android:api-29
+    steps:
+      - checkout
+      - run:
+          name: Analyze on SonarCloud
+          command: ./gradlew build sonarqube
+
+workflows:
+  main:
+    jobs:
+      - build:
+          context: SonarCloud
