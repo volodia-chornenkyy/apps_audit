@@ -1,4 +1,4 @@
-package com.vchornenkyi.appsaudit
+package com.vchornenkyi.appsaudit.feature.list
 
 import javax.inject.Inject
 
