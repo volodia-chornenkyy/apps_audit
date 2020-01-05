@@ -2,12 +2,12 @@ package com.vchornenkyi.appsaudit.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import dagger.android.AndroidInjection
+import com.vchornenkyi.appsaudit.di.AndroidSafeInjection
 
 abstract class BaseActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
+        AndroidSafeInjection.inject(this)
         super.onCreate(savedInstanceState)
     }
 }
