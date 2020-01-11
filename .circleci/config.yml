@@ -7,9 +7,22 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Analyze on SonarCloud
-          command: ./gradlew build sonarqube
+          name: Build app
+          command: ./gradlew build jacocoTestReport
+      - run:
+          name: Upload to SonarQube
+          command: ./gradlew sonarqube
 
+      - run:
+          name: Save test results
+          command: |
+            mkdir -p ~/test-results/junit/
+            find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/test-results/junit/ \;
+          when: always
+      - store_test_results:
+          path: ~/test-results
+      - store_artifacts:
+          path: app/build/reports
 workflows:
   main:
     jobs:

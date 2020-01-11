@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.sonarqube'
 apply plugin: 'kotlin-kapt'
+apply from: "$project.rootDir/buildscripts/jacoco.gradle"
 
 android {
     compileSdkVersion 29
@@ -30,6 +31,9 @@ android {
             property "sonar.projectKey", "volodia-chornenkyy_apps_audit"
             property "sonar.organization", "volodia-chornenkyy"
             property "sonar.host.url", "https://sonarcloud.io"
+            property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacocoTestReport"
+            property "sonar.junit.reportPaths", "build/test-results"
+            property "sonar.exclusions", "**/*Test.kt"
         }
     }
 
@@ -40,6 +44,15 @@ android {
                     'src/main/res'
             ]
         }
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+        unitTests.includeAndroidResources = true
     }
 }
 
@@ -62,6 +75,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation 'androidx.test.ext:junit:1.1.1'
+    testImplementation 'androidx.test:core-ktx:1.2.0'
+    testImplementation 'org.robolectric:robolectric:4.3.1'
 }
