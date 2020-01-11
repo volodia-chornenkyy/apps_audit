@@ -7,8 +7,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Analyze on SonarCloud
-          command: ./gradlew build sonarqube
+          name: Build app
+          command: ./gradlew build
+#      - run:
+#          name: Upload to SonarQube
+#          command: ./gradlew sonarqube
 
       - run:
           name: Save test results
