@@ -9,9 +9,9 @@ jobs:
       - run:
           name: Build app
           command: ./gradlew build jacocoTestReport
-#      - run:
-#          name: Upload to SonarQube
-#          command: ./gradlew sonarqube
+      - run:
+          name: Upload to SonarQube
+          command: ./gradlew sonarqube
 
       - run:
           name: Save test results
