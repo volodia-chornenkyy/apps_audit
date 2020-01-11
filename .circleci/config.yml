@@ -10,9 +10,9 @@ jobs:
           name: Analyze on SonarCloud
           command: ./gradlew build sonarqube
       - store_test_results:
-          path: ~/app/build/test-results
+          path: app/build/test-results
       - store_artifacts:
-          path: ~/app/build/reports/tests/
+          path: app/build/reports
 workflows:
   main:
     jobs:
