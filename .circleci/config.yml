@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Build app
-          command: ./gradlew build
+          command: ./gradlew build testDebugUnitTestCoverage
 #      - run:
 #          name: Upload to SonarQube
 #          command: ./gradlew sonarqube
