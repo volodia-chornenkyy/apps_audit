@@ -34,6 +34,7 @@ android {
             property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacocoTestReport"
             property "sonar.junit.reportPaths", "build/test-results"
             property "sonar.exclusions", "**/*Test.kt"
+            property "sonar.projectVersion", project.version
         }
     }
 
