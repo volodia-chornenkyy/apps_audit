@@ -1,7 +1,6 @@
 package com.vchornenkyi.appsaudit.feature.list
 
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -17,6 +16,8 @@ class ListAppsFragment : BaseFragment(R.layout.fragment_list_apps) {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    private val listAppsAdapter = ListAppsAdapter()
+
     private val viewModel: ListAppsViewModel by viewModels {
         viewModelFactory
     }
@@ -24,10 +25,7 @@ class ListAppsFragment : BaseFragment(R.layout.fragment_list_apps) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // test code
-        tvApps.text = ""
-        tvApps.movementMethod = ScrollingMovementMethod()
-
+        rvApps.adapter = listAppsAdapter
         observeListOfApps()
     }
 
@@ -38,8 +36,6 @@ class ListAppsFragment : BaseFragment(R.layout.fragment_list_apps) {
     }
 
     private fun updateListOfApps(list: List<AndroidApp>) {
-        val stringBuilder = StringBuilder()
-        list.forEach { app -> stringBuilder.append(app).append("\n\n") }
-        tvApps.text = stringBuilder.toString()
+        listAppsAdapter.updateData(list)
     }
 }
