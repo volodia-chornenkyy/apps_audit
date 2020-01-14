@@ -9,6 +9,7 @@
         android:id="@+id/tvAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/app_primary_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Application name" />
@@ -17,6 +18,7 @@
         android:id="@+id/tvPackageName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/app_secondary_text"
         android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="@id/tvAppName"
         app:layout_constraintTop_toBottomOf="@id/tvAppName"

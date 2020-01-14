@@ -7,6 +7,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.vchornenkyi.appsaudit.R
 import com.vchornenkyi.appsaudit.base.BaseFragment
+import com.vchornenkyi.appsaudit.common.ui.dpToPx
+import com.vchornenkyi.appsaudit.common.ui.recycler.HorizontalSpaceItemDecoration
+import com.vchornenkyi.appsaudit.common.ui.recycler.VerticalSpaceItemDecoration
+import com.vchornenkyi.appsaudit.common.ui.recycler.setDivider
 import com.vchornenkyi.appsaudit.domain.applisting.AndroidApp
 import kotlinx.android.synthetic.main.fragment_list_apps.*
 import javax.inject.Inject
@@ -26,6 +30,17 @@ class ListAppsFragment : BaseFragment(R.layout.fragment_list_apps) {
         super.onViewCreated(view, savedInstanceState)
 
         rvApps.adapter = listAppsAdapter
+        rvApps.setDivider(R.drawable.divider_list)
+        rvApps.addItemDecoration(
+            VerticalSpaceItemDecoration(
+                context?.dpToPx(5) ?: 0
+            )
+        )
+        rvApps.addItemDecoration(
+            HorizontalSpaceItemDecoration(
+                context?.dpToPx(8) ?: 0
+            )
+        )
         observeListOfApps()
     }
 
