@@ -1,9 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'org.sonarqube'
 apply plugin: 'kotlin-kapt'
 apply from: "$project.rootDir/buildscripts/jacoco.gradle"
+apply from: "$project.rootDir/buildscripts/sonarqube.gradle"
 
 android {
     compileSdkVersion 29
@@ -23,24 +23,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    sonarqube {
-        properties {
-            property "sonar.projectKey", "volodia-chornenkyy_apps_audit"
-            property "sonar.organization", "volodia-chornenkyy"
-            property "sonar.host.url", "https://sonarcloud.io"
-            property "sonar.android.lint.report", "${project.buildDir}/reports/lint-results.xml"
-            property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacocoTestReport/jacocoTestReport.xml"
-            property "sonar.junit.reportPaths", "${project.buildDir}/test-results/testDebugUnitTest"
-            property "sonar.sources", "src/main"
-            property "sonar.tests", "src/test"
-            property "sonar.java.coveragePlugin", "jacoco"
-            property "sonar.java.binaries", "${project.buildDir}/tmp/kotlin-classes"
-            property "sonar.java.test.binaries", "build/tmp/kotlin-classes/debugUnitTest"
-            property "sonar.exclusions", "**/*Test.kt, **/di/**"
-            property "sonar.projectVersion", project.version
         }
     }
 
