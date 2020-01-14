@@ -31,8 +31,8 @@ android {
             property "sonar.projectKey", "volodia-chornenkyy_apps_audit"
             property "sonar.organization", "volodia-chornenkyy"
             property "sonar.host.url", "https://sonarcloud.io"
-            property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacocoTestReport"
-            property "sonar.junit.reportPaths", "build/test-results"
+            property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacocoTestReport/jacocoTestReport.xml"
+            property "sonar.junit.reportPaths", "${project.buildDir}/test-results/testDebugUnitTest"
             property "sonar.exclusions", "**/*Test.kt"
             property "sonar.projectVersion", project.version
         }
