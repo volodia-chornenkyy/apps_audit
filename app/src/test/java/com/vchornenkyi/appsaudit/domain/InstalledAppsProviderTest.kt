@@ -11,6 +11,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.spy
 
@@ -33,6 +34,7 @@ class InstalledAppsProviderTest {
     private suspend fun checkInstalledApps(listOfAppInfo: List<ApplicationInfo>) {
         val mock = mock(PackageManager::class.java)
         whenever(mock.getInstalledApplications(GET_META_DATA)).thenReturn(listOfAppInfo)
+        whenever(mock.getApplicationLabel(ArgumentMatchers.any())).thenReturn("App Name")
         val spyContext = spy(InstrumentationRegistry.getInstrumentation().context)
         whenever(spyContext.packageManager).thenReturn(mock)
         val installedAppsProvider =
