@@ -9,14 +9,15 @@ import javax.inject.Inject
 class InstalledAppsProvider @Inject constructor(private val context: Context) :
     AppsListingProvider {
 
+    private val packageManager: PackageManager = context.packageManager
+
     override suspend fun getApps(): List<AndroidApp> = withContext(Dispatchers.Default) {
-        val pm: PackageManager = context.packageManager
-        val packages = pm.getInstalledApplications(PackageManager.GET_META_DATA)
+        val packages = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
         return@withContext packages
-            .map { packageInfo ->
+            .map { applicationInfo ->
                 AndroidApp(
-                    packageInfo.packageName,
-                    packageInfo.name
+                    applicationInfo.packageName,
+                    packageManager.getApplicationLabel(applicationInfo).toString()
                 )
             }
     }
