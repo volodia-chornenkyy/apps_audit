@@ -38,7 +38,7 @@ android {
             property "sonar.java.coveragePlugin", "jacoco"
             property "sonar.java.binaries", "${project.buildDir}/tmp/kotlin-classes"
             property "sonar.java.test.binaries", "build/tmp/kotlin-classes/debugUnitTest"
-            property "sonar.exclusions", "**/*Test.kt"
+            property "sonar.exclusions", "**/*Test.kt, **/di/**"
             property "sonar.projectVersion", project.version
         }
     }
@@ -84,6 +84,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation 'androidx.test.ext:junit:1.1.1'
     testImplementation 'androidx.test:core-ktx:1.2.0'
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
     testImplementation 'org.robolectric:robolectric:4.3.1'
     testImplementation 'org.mockito:mockito-core:3.2.4'
 }
