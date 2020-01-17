@@ -16,7 +16,9 @@ android {
             property "sonar.java.coveragePlugin", "jacoco"
             property "sonar.java.binaries", "${project.buildDir}/tmp/kotlin-classes"
             property "sonar.java.test.binaries", "build/tmp/kotlin-classes/debugUnitTest"
-            property "sonar.exclusions", "**/*Test.kt, **/di/**, **/*Fragment.kt, **/*Activity.kt, **/*Application.kt, **/*Adapter.kt, **/*ViewHolder.kt"
+            property "sonar.exclusions", "**/*Test.kt, " +
+                    "**/di/**, " +
+                    "**/*Fragment.kt, **/*Activity.kt, **/*Application.kt, **/*Adapter.kt, **/*ViewHolder.kt, **/common/ui/**"
             property "sonar.projectVersion", project.version
         }
     }

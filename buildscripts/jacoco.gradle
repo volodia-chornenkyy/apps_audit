@@ -42,6 +42,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
                     '**/*Activity.*',
                     '**/*ViewHolder.*',
                     '**/*Adapter.*',
+                    '**/common/ui/**',
                     '**/*Test*.*',
                     'android/**/*.*']
 
