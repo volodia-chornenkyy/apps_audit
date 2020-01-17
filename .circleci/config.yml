@@ -23,7 +23,7 @@ jobs:
           path: ~/test-results
       - store_artifacts:
           path: app/build/reports
-          destination: /
+          destination: /reports
 workflows:
   main:
     jobs:
