@@ -8,6 +8,7 @@ android {
             property "sonar.organization", "volodia-chornenkyy"
             property "sonar.host.url", "https://sonarcloud.io"
             property "sonar.androidLint.reportPaths", "${project.buildDir}/reports/lint-results.xml"
+            property "sonar.kotlin.detekt.reportPaths", "${project.buildDir}/reports/detekt.xml"
             property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacocoTestReport/jacocoTestReport.xml"
             property "sonar.junit.reportPaths", "${project.buildDir}/test-results/testDebugUnitTest"
             property "sonar.sources", "src/main"
