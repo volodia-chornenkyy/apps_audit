@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.vchornenkyi.appsaudit.R
 import com.vchornenkyi.appsaudit.base.BaseFragment
-import com.vchornenkyi.appsaudit.common.ui.dpToPx
+import com.vchornenkyi.appsaudit.common.ui.px
 import com.vchornenkyi.appsaudit.common.ui.recycler.HorizontalSpaceItemDecoration
 import com.vchornenkyi.appsaudit.common.ui.recycler.VerticalSpaceItemDecoration
 import com.vchornenkyi.appsaudit.common.ui.recycler.setDivider
@@ -33,12 +33,12 @@ class ListAppsFragment : BaseFragment(R.layout.fragment_list_apps) {
         rvApps.setDivider(R.drawable.divider_list)
         rvApps.addItemDecoration(
             VerticalSpaceItemDecoration(
-                context?.dpToPx(5) ?: 0
+                context?.px(R.dimen.list_apps_item_vertical_space) ?: 0
             )
         )
         rvApps.addItemDecoration(
             HorizontalSpaceItemDecoration(
-                context?.dpToPx(8) ?: 0
+                context?.px(R.dimen.list_apps_item_horizontal_space) ?: 0
             )
         )
         observeListOfApps()
