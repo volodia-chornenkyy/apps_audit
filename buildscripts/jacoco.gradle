@@ -5,7 +5,7 @@ ext {
 }
 
 jacoco {
-    toolVersion = "0.7.9"
+    toolVersion = "0.8.5"
     reportsDir = file("$buildDir/reports")
 }
 
@@ -36,6 +36,13 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
                     '**/*Injector*.*',
                     '**/BuildConfig.*',
                     '**/Manifest*.*',
+                    '**/di/**',
+                    '**/*Application.*',
+                    '**/*Fragment.*',
+                    '**/*Activity.*',
+                    '**/*ViewHolder.*',
+                    '**/*Adapter.*',
+                    '**/common/ui/**',
                     '**/*Test*.*',
                     'android/**/*.*']
 
